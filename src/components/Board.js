@@ -2,16 +2,14 @@ import React from "react";
 import './styles/Board.css';
 import Square from "./Square";
 
-function Board() {
-
-    const status = 'Next player: X';
+function Board({ squares, onClick }) {
 
     function renderSquare(i) {
-        return <Square />;
+        return <Square value={squares[i]} onClick={() => onClick(i)}/>;
     }
 
     return (  
-        <div>
+        <div className="board-row">
           <div className="board-row">
             {renderSquare(0)}
             {renderSquare(1)}
@@ -26,8 +24,7 @@ function Board() {
             {renderSquare(6)}
             {renderSquare(7)}
             {renderSquare(8)}
-          </div>
-          <div className="status">{status}</div>
+          </div> 
         </div>
     )
 }
